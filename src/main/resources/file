@@ -1,0 +1,20 @@
+<jaxws:bindings
+    xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    wsdlLocation="your.wsdl">
+
+    <!-- Customize package name for a namespace -->
+    <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="com.bofa.imagautility.strata.client"/>
+        </jaxb:schemaBindings>
+    </jaxws:bindings>
+
+    <!-- Rename a class to avoid conflict -->
+    <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema/xs:complexType[@name='ConflictingTypeName']">
+        <jaxb:class name="CustomTypeName"/>
+    </jaxws:bindings>
+
+</jaxws:bindings>
